@@ -52,7 +52,7 @@ async function findViralItems() {
 
     const BASE_URL = "https://www.vinted.pl/api/v2/catalog/items";
     const PARAMS =
-        "per_page=200&search_text=&catalog_ids=&order=newest_first&size_ids=&brand_ids=15971&status_ids=&color_ids=&material_ids=";
+        "per_page=200&search_text=&catalog_ids=&order=newest_first&size_ids=&brand_ids=15971&status_ids[]=1&status_ids[]=6&color_ids=&material_ids=";
     const pagesToFetch = [1, 2, 3];
     let allItems = [];
 
