@@ -1,0 +1,112 @@
+const axios = require("axios");
+const fs = require("fs"); // Używamy modułu File System do odczytu pliku
+
+/**
+ * Funkcja do formatowania ciasteczek z formatu JSON na string akceptowany w nagłówku HTTP.
+ * @param {Array<Object>} cookies - Tablica obiektów z ciasteczkami.
+ * @returns {string} Sformatowany string z ciasteczkami.
+ */
+function formatCookies(cookies) {
+    if (!Array.isArray(cookies)) {
+        throw new Error(
+            "Dane wejściowe muszą być tablicą ciasteczek w formacie JSON."
+        );
+    }
+    return cookies.map((cookie) => `${cookie.name}=${cookie.value}`).join("; ");
+}
+
+/**
+ * Główna funkcja do pobierania i przetwarzania danych z Vinted.
+ */
+async function findViralItems() {
+    let cookies;
+    let cookieHeader;
+
+    // 1. Wczytaj i sparsuj plik cookies.json
+    try {
+        const cookiesJsonString = fs.readFileSync("cookies.json", "utf-8");
+        cookies = JSON.parse(cookiesJsonString);
+        cookieHeader = formatCookies(cookies);
+    } catch (error) {
+        if (error.code === "ENOENT") {
+            console.error(
+                "Błąd: Plik cookies.json nie został znaleziony. Upewnij się, że znajduje się w tym samym folderze co skrypt."
+            );
+        } else if (error instanceof SyntaxError) {
+            console.error(
+                "Błąd: Plik cookies.json zawiera nieprawidłowy format JSON."
+            );
+        } else {
+            console.error(
+                "Wystąpił błąd podczas wczytywania pliku cookies.json:",
+                error.message
+            );
+        }
+        return; // Zakończ działanie skryptu w przypadku błędu
+    }
+
+    const BASE_URL = "https://www.vinted.pl/api/v2/catalog/items";
+    const PARAMS =
+        "per_page=200&search_text=&catalog_ids=&order=newest_first&size_ids=&brand_ids=15971&status_ids=&color_ids=&material_ids=";
+    const pagesToFetch = [1, 2, 3];
+    let allItems = [];
+
+    console.log("Ciasteczka wczytane pomyślnie. Pobieranie danych z Vinted...");
+
+    try {
+        // 2. Wykonaj requesty dla stron 1, 2 i 3
+        const requests = pagesToFetch.map((page) =>
+            axios.get(`${BASE_URL}?page=${page}&${PARAMS}`, {
+                headers: {
+                    Cookie: cookieHeader,
+                    "User-Agent":
+                        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
+                },
+            })
+        );
+
+        const responses = await Promise.all(requests);
+
+        // Połącz wszystkie produkty w jedną tablicę
+        responses.forEach((response) => {
+            if (response.data && Array.isArray(response.data.items)) {
+                allItems = allItems.concat(response.data.items);
+            }
+        });
+
+        console.log(`Pobrano łącznie ${allItems.length} produktów.`);
+
+        // Posortuj produkty po liczbie polubień (favourite_count) malejąco
+        allItems.sort((a, b) => b.favourite_count - a.favourite_count);
+
+        // Wybierz 30 najpopularniejszych produktów
+        const top30Items = allItems.slice(0, 30);
+
+        // 3. Wypisz wyniki w konsoli
+        console.log("\n--- 30 NAJPOPULARNIEJSZYCH PRODUKTÓW ---");
+        if (top30Items.length > 0) {
+            top30Items.forEach((item, index) => {
+                console.log(
+                    `${index + 1}. ${item.title} - Polubienia: ${
+                        item.favourite_count
+                    }\n   URL: ${item.url}\n`
+                );
+            });
+        } else {
+            console.log(
+                "Nie znaleziono żadnych produktów. Sprawdź poprawność ciasteczek lub parametry wyszukiwania."
+            );
+        }
+    } catch (error) {
+        console.error(
+            "Wystąpił błąd podczas pobierania danych:",
+            error.response
+                ? `${error.response.status} ${error.response.statusText}`
+                : error.message
+        );
+        console.error("Upewnij się, że Twoje ciasteczka są aktualne.");
+    }
+}
+
+// Uruchomienie głównej funkcji
+findViralItems();
