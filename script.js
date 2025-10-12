@@ -1,5 +1,6 @@
 const axios = require("axios");
-const fs = require("fs"); // Używamy modułu File System do odczytu pliku
+const fs = require("fs");
+const path = require("path");
 
 /**
  * Funkcja do formatowania ciasteczek z formatu JSON na string akceptowany w nagłówku HTTP.
@@ -22,7 +23,6 @@ async function findViralItems() {
     let cookies;
     let cookieHeader;
 
-    // 1. Wczytaj i sparsuj plik cookies.json
     try {
         const cookiesJsonString = fs.readFileSync("cookies.json", "utf-8");
         cookies = JSON.parse(cookiesJsonString);
@@ -42,7 +42,12 @@ async function findViralItems() {
                 error.message
             );
         }
-        return; // Zakończ działanie skryptu w przypadku błędu
+        return;
+    }
+
+    const outputDir = "results";
+    if (!fs.existsSync(outputDir)) {
+        fs.mkdirSync(outputDir);
     }
 
     const BASE_URL = "https://www.vinted.pl/api/v2/catalog/items";
@@ -51,10 +56,11 @@ async function findViralItems() {
     const pagesToFetch = [1, 2, 3];
     let allItems = [];
 
-    console.log("Ciasteczka wczytane pomyślnie. Pobieranie danych z Vinted...");
+    console.log(
+        "Ciasteczka wczytane pomyślnie. Rozpoczynam pobieranie danych z Vinted...\n"
+    );
 
     try {
-        // 2. Wykonaj requesty dla stron 1, 2 i 3
         const requests = pagesToFetch.map((page) =>
             axios.get(`${BASE_URL}?page=${page}&${PARAMS}`, {
                 headers: {
@@ -67,23 +73,17 @@ async function findViralItems() {
 
         const responses = await Promise.all(requests);
 
-        // Połącz wszystkie produkty w jedną tablicę
         responses.forEach((response) => {
             if (response.data && Array.isArray(response.data.items)) {
                 allItems = allItems.concat(response.data.items);
             }
         });
-
-        console.log(`Pobrano łącznie ${allItems.length} produktów.`);
-
-        // Posortuj produkty po liczbie polubień (favourite_count) malejąco
         allItems.sort((a, b) => b.favourite_count - a.favourite_count);
 
-        // Wybierz 30 najpopularniejszych produktów
         const top30Items = allItems.slice(0, 30);
 
-        // 3. Wypisz wyniki w konsoli
-        console.log("\n--- 30 NAJPOPULARNIEJSZYCH PRODUKTÓW ---");
+        let fileContent = "--- 30 NAJPOPULARNIEJSZYCH PRODUKTÓW ---\n\n";
+
         if (top30Items.length > 0) {
             top30Items.forEach((item, index) => {
                 console.log(
@@ -91,12 +91,31 @@ async function findViralItems() {
                         item.favourite_count
                     }\n   URL: ${item.url}\n`
                 );
+                fileContent += `${index + 1}. ${item.title} - Polubienia: ${
+                    item.favourite_count
+                }\n`;
+                fileContent += `   URL: ${item.url}\n\n`;
             });
         } else {
-            console.log(
-                "Nie znaleziono żadnych produktów. Sprawdź poprawność ciasteczek lub parametry wyszukiwania."
-            );
+            fileContent +=
+                "Nie znaleziono żadnych produktów. Sprawdź poprawność ciasteczek lub parametry wyszukiwania.";
         }
+
+        const now = new Date();
+        const datePart = `${now.getFullYear()}-${String(
+            now.getMonth() + 1
+        ).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")}`;
+        const timePart = `${String(now.getHours()).padStart(2, "0")}-${String(
+            now.getMinutes()
+        ).padStart(2, "0")}`;
+        const filename = `${datePart}_${timePart}.txt`;
+        const outputPath = path.join(outputDir, filename);
+
+        fs.writeFileSync(outputPath, fileContent, "utf-8");
+
+        console.log(
+            `\nOperacja zakończona sukcesem. Wyniki zostały zapisane w pliku: ${outputPath}`
+        );
     } catch (error) {
         console.error(
             "Wystąpił błąd podczas pobierania danych:",
@@ -108,5 +127,4 @@ async function findViralItems() {
     }
 }
 
-// Uruchomienie głównej funkcji
 findViralItems();
