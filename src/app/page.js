@@ -1,9 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ProductCard from "@/components/ProductCard";
 import LoadingSpinner from "@/components/LoadingSpinner";
-import HistoryModal from "@/components/HistoryModal";
+import HistorySidebar from "@/components/HistorySidebar";
 
 export default function Home() {
     const [cookiesInput, setCookiesInput] = useState("");
@@ -20,9 +20,9 @@ export default function Home() {
     );
     const [products, setProducts] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
-    const [showHistory, setShowHistory] = useState(false);
     const [history, setHistory] = useState([]);
     const [loadedFromHistory, setLoadedFromHistory] = useState(null);
+    const [isLoadingHistory, setIsLoadingHistory] = useState(false);
 
     // Handle cookies input change
     const handleCookiesChange = (e) => {
@@ -141,27 +141,30 @@ export default function Home() {
         }
     };
 
-    // Fetch history
-    const handleShowHistory = async () => {
-        try {
-            const response = await fetch("/api/history");
-            const data = await response.json();
+    // Load history on mount
+    useEffect(() => {
+        const loadHistory = async () => {
+            try {
+                const response = await fetch("/api/history");
+                const data = await response.json();
 
-            if (data.success) {
-                setHistory(data.history);
-                setShowHistory(true);
-            } else {
-                alert("Nie udało się pobrać historii");
+                if (data.success) {
+                    setHistory(data.history);
+                }
+            } catch (error) {
+                console.error("Error loading history:", error);
             }
-        } catch (error) {
-            console.error("Error:", error);
-            alert("Wystąpił błąd podczas pobierania historii");
-        }
-    };
+        };
+
+        loadHistory();
+    }, []);
 
     // Load historical search
     const handleSelectHistory = async (id) => {
         try {
+            setIsLoadingHistory(true);
+            setProducts([]); // Clear products for smooth transition
+
             const response = await fetch(`/api/history?id=${id}`);
             const data = await response.json();
 
@@ -170,22 +173,29 @@ export default function Home() {
                 const items = typeof data.data.items_data === 'string'
                     ? JSON.parse(data.data.items_data)
                     : data.data.items_data;
-                setProducts(items);
-                setLoadedFromHistory(data.data.created_at);
-                setShowHistory(false);
+
+                // Small delay for smooth transition
+                setTimeout(() => {
+                    setProducts(items);
+                    setLoadedFromHistory(data.data.created_at);
+                    setIsLoadingHistory(false);
+                }, 300);
             } else {
                 alert("Nie udało się załadować wyników");
+                setIsLoadingHistory(false);
             }
         } catch (error) {
             console.error("Error:", error);
             alert("Wystąpił błąd podczas ładowania wyników");
+            setIsLoadingHistory(false);
         }
     };
 
     return (
-        <>
-            <main className="bg-black text-white pt-16 pb-20 px-4">
-                <div className="max-w-7xl mx-auto">
+        <div className="flex h-screen bg-black">
+            {/* Main Content */}
+            <main className="flex-1 overflow-y-auto overflow-x-hidden">
+                <div className="max-w-[1400px] mx-auto pt-16 pb-20 px-8">
                     {/* Input Section */}
                     <section className="max-w-[800px] mx-auto mb-16">
                         <div className="bg-[#111111] border border-gray-800 rounded-3xl p-4 sm:p-6 md:p-8">
@@ -353,35 +363,15 @@ export default function Home() {
                                         />
                                     </svg>
                                 </button>
-
-                                <button
-                                    onClick={handleShowHistory}
-                                    className="h-11 bg-stone-800 text-white hover:bg-stone-700 py-3 px-8 rounded-full font-medium transition-colors inline-flex items-center justify-center gap-2 text-base"
-                                >
-                                    <svg
-                                        className="w-5 h-5"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        viewBox="0 0 24 24"
-                                    >
-                                        <path
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                            strokeWidth={2}
-                                            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                                        />
-                                    </svg>
-                                    Historia
-                                </button>
                             </div>
                         </div>
                     </section>
 
                     {/* Loading Animation */}
-                    {isLoading && <LoadingSpinner />}
+                    {(isLoading || isLoadingHistory) && <LoadingSpinner />}
 
                     {/* Results Section */}
-                    {!isLoading && products.length > 0 && (
+                    {!isLoading && !isLoadingHistory && products.length > 0 && (
                         <section>
                             {loadedFromHistory && (
                                 <div className="max-w-[800px] mx-auto mb-8">
@@ -422,7 +412,7 @@ export default function Home() {
                                     {products.length} produktów
                                 </span>
                             </div>
-                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                                 {products.map((product, index) => (
                                     <ProductCard
                                         key={product.id || index}
@@ -435,13 +425,11 @@ export default function Home() {
                 </div>
             </main>
 
-            {/* History Modal */}
-            <HistoryModal
-                isOpen={showHistory}
-                onClose={() => setShowHistory(false)}
+            {/* History Sidebar */}
+            <HistorySidebar
                 history={history}
                 onSelectHistory={handleSelectHistory}
             />
-        </>
+        </div>
     );
 }
