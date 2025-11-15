@@ -73,27 +73,65 @@ export default function Home() {
                 behavior: "smooth"
             });
 
-            const response = await fetch("/api/fetch-products", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    cookies,
-                    baseUrl,
-                    params: searchParams,
-                }),
-            });
+            const pagesToFetch = [1, 2, 3];
+            let allItems = [];
 
-            const data = await response.json();
+            // Fetch through our proxy to properly send cookies
+            const requests = pagesToFetch.map((page) =>
+                fetch("/api/proxy", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        url: `${baseUrl}?page=${page}&${searchParams}`,
+                        cookies: cookies,
+                    }),
+                })
+            );
 
-            if (data.success) {
-                setProducts(data.items);
-                setLoadedFromHistory(null); // Clear history info for new search
-            } else {
-                alert(
-                    `Błąd: ${data.error || "Nie udało się pobrać produktów"}`
-                );
+            const responses = await Promise.all(requests);
+
+            for (const response of responses) {
+                if (response.ok) {
+                    const result = await response.json();
+                    if (result.success && result.data && Array.isArray(result.data.items)) {
+                        allItems = allItems.concat(result.data.items);
+                    }
+                }
+            }
+
+            if (allItems.length === 0) {
+                alert("Nie znaleziono produktów. Sprawdź cookies i parametry.");
+                setIsLoading(false);
+                return;
+            }
+
+            // Sort by favourite_count descending
+            allItems.sort((a, b) => b.favourite_count - a.favourite_count);
+
+            // Get top 100
+            const top100Items = allItems.slice(0, 100);
+
+            setProducts(top100Items);
+            setLoadedFromHistory(null); // Clear history info for new search
+
+            // Save to database via API
+            try {
+                await fetch("/api/fetch-products", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        items: top100Items,
+                        baseUrl,
+                        params: searchParams,
+                    }),
+                });
+            } catch (saveError) {
+                console.error("Failed to save to database:", saveError);
+                // Don't alert user - products are still displayed
             }
         } catch (error) {
             console.error("Error:", error);
