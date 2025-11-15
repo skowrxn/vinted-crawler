@@ -1,5 +1,18 @@
 [
     {
+        "domain": ".vinted.pl",
+        "expirationDate": 1777646768,
+        "hostOnly": false,
+        "httpOnly": false,
+        "name": "__eoi",
+        "path": "/",
+        "sameSite": "no_restriction",
+        "secure": true,
+        "session": false,
+        "storeId": null,
+        "value": "ID=4ebb1d6e175b0d0c:T=1762094768:RT=1762094768:S=AA-AfjZuPitIIWFbRcwVENSgFfgZ"
+    },
+    {
         "domain": "www.vinted.pl",
         "expirationDate": 1792942960.619107,
         "hostOnly": true,
@@ -14,7 +27,7 @@
     },
     {
         "domain": ".www.vinted.pl",
-        "expirationDate": 1760909556.882349,
+        "expirationDate": 1763766897.853059,
         "hostOnly": false,
         "httpOnly": true,
         "name": "anon_id",
@@ -26,8 +39,21 @@
         "value": "9102827f-3b1c-451a-aea6-49f58fd178d6"
     },
     {
+        "domain": ".vinted.pl",
+        "expirationDate": 1793630765,
+        "hostOnly": false,
+        "httpOnly": false,
+        "name": "__ps_fva",
+        "path": "/",
+        "sameSite": "no_restriction",
+        "secure": true,
+        "session": false,
+        "storeId": null,
+        "value": "1762094765559"
+    },
+    {
         "domain": ".www.vinted.pl",
-        "expirationDate": 1760905581.06331,
+        "expirationDate": 1763764476.631383,
         "hostOnly": false,
         "httpOnly": true,
         "name": "access_token_web",
@@ -36,7 +62,7 @@
         "secure": true,
         "session": false,
         "storeId": null,
-        "value": "eyJraWQiOiJFNTdZZHJ1SHBsQWp1MmNObzFEb3JIM2oyN0J1NS1zX09QNVB3UGlobjVNIiwiYWxnIjoiUFMyNTYifQ.eyJhY2NvdW50X2lkIjo2ODAzMzQxOCwiYXBwX2lkIjo0LCJhdWQiOiJmci5jb3JlLmFwaSIsImNsaWVudF9pZCI6IndlYiIsImV4cCI6MTc2MDMwNzk3MCwiaWF0IjoxNzYwMzAwNzcwLCJpc3MiOiJ2aW50ZWQtaWFtLXNlcnZpY2UiLCJsb2dpbl90eXBlIjozLCJwdXJwb3NlIjoiYWNjZXNzIiwic2NvcGUiOiJ1c2VyIiwic2lkIjoiNjBiZDg3MzMtMTc1ODUzODY4MCIsInN1YiI6Ijk0NDAxMjgyIiwiY2MiOiJQTCIsImFuaWQiOiI5MTAyODI3Zi0zYjFjLTQ1MWEtYWVhNi00OWY1OGZkMTc4ZDYiLCJhY3QiOnsic3ViIjoiOTQ0MDEyODIifX0.G-86v5KMPzR8SladqhZx_qORFx08D7ms2_7JHUfHyuy6Q47ijPjbXELyw7O3trMqxqJCU4uQS4d9Fdpb6dIHC0vgF3CeMjU5K-0Asj507ye4SXafGI7LzYZzisleX_wnZx-ZXKt_xuoPRxWSPrH4HsdZ7f3Gju-Rtl2tDpeVmN2xVPCWi4XEKDb8-I7uPNcFnBijgGCDj5wqhCwBIIuXVvsdw1Wo7hnq_hfjCPG2XUQLj_VRNec0WwIQno5wfGrjPSNllPtJJiG1-EhBlYgaHBMpfSoI_-uOIkuURGcWrYOMCF7poVjgGKKrD4wso_6YPXPS3yaVa5HWGDL6R8Kt_Q"
+        "value": "eyJraWQiOiJFNTdZZHJ1SHBsQWp1MmNObzFEb3JIM2oyN0J1NS1zX09QNVB3UGlobjVNIiwiYWxnIjoiUFMyNTYifQ.eyJhY2NvdW50X2lkIjo2ODAzMzQxOCwiYXBwX2lkIjo0LCJhdWQiOiJmci5jb3JlLmFwaSIsImNsaWVudF9pZCI6IndlYiIsImV4cCI6MTc2MzE2Njg3NSwiaWF0IjoxNzYzMTU5Njc1LCJpc3MiOiJ2aW50ZWQtaWFtLXNlcnZpY2UiLCJsb2dpbl90eXBlIjozLCJwdXJwb3NlIjoiYWNjZXNzIiwic2NvcGUiOiJ1c2VyIiwic2lkIjoiYzMwMDJhNDAtMTc2MjI3Njg5NCIsInN1YiI6Ijk0NDAxMjgyIiwiY2MiOiJQTCIsImFuaWQiOiI5MTAyODI3Zi0zYjFjLTQ1MWEtYWVhNi00OWY1OGZkMTc4ZDYiLCJhY3QiOnsic3ViIjoiOTQ0MDEyODIifX0.yEmcYVEu3s-JnfTz8Pi5RaB3wAIBMdIi4wnRzJiODH1yBiwlHMi0BMoCckj5nvodnzVuin2bopUWYjWNH_aZfdZi0B92oXMWNGwNsTatldO7QjrKxA1dcv351KyQLgODsBbLX9yv6bUjrw1CHq4GAA2gnHI2ibiyOPYsftnHg9m_QDh4ermmVVddIT6enbhA3uM1DNMTLrVAgHYaD7D6W3B-wBtP6ZckxxaLbWJwmtRlvNSj1VJ9VhkWPM6POF5xKKyfJGkx6BvsT6jCCbey1Dlrhe6Iq44QrP1MPXM_nOXV5BAiURgdRpuMmxmliB1jq5-xPzkCuIruqbnOJnhugA"
     },
     {
         "domain": ".vinted.pl",
@@ -66,7 +92,7 @@
     },
     {
         "domain": "www.vinted.pl",
-        "expirationDate": 1793098679.612013,
+        "expirationDate": 1796836892.537968,
         "hostOnly": true,
         "httpOnly": false,
         "name": "anonymous-locale",
@@ -79,7 +105,7 @@
     },
     {
         "domain": "www.vinted.pl",
-        "expirationDate": 1760391158.43028,
+        "expirationDate": 1763248499.474087,
         "hostOnly": true,
         "httpOnly": false,
         "name": "viewport_size",
@@ -88,11 +114,24 @@
         "secure": false,
         "session": false,
         "storeId": null,
-        "value": "1600"
+        "value": "2000"
     },
     {
         "domain": ".vinted.pl",
-        "expirationDate": 1791840615,
+        "expirationDate": 1769870889,
+        "hostOnly": false,
+        "httpOnly": false,
+        "name": "_fbp",
+        "path": "/",
+        "sameSite": "lax",
+        "secure": false,
+        "session": false,
+        "storeId": null,
+        "value": "fb.1.1762094765575.892619026629003311"
+    },
+    {
+        "domain": ".vinted.pl",
+        "expirationDate": 1794698100,
         "hostOnly": false,
         "httpOnly": false,
         "name": "OptanonConsent",
@@ -101,11 +140,11 @@
         "secure": false,
         "session": false,
         "storeId": null,
-        "value": "isGpcEnabled=0&datestamp=Sun+Oct+12+2025+23%3A30%3A15+GMT%2B0200+(czas+%C5%9Brodkowoeuropejski+letni)&version=202508.2.0&browserGpcFlag=0&isIABGlobal=false&consentId=94401282&identifierType=Cookie+Unique+Id&isAnonUser=1&hosts=&interactionCount=1&landingPath=NotLandingPage&groups=C0001%3A1%2CC0002%3A1%2CC0003%3A1%2CC0004%3A1%2CC0005%3A1%2CV2STACK42%3A1%2CC0015%3A1%2CC0035%3A1%2CC0038%3A1&genVendors=V2%3A1%2CV1%3A1%2C&intType=1&geolocation=PL%3B14&AwaitingReconsent=false"
+        "value": "isGpcEnabled=0&datestamp=Sat+Nov+15+2025+00%3A15%3A00+GMT%2B0100+(czas+%C5%9Brodkowoeuropejski+standardowy)&version=202508.2.0&browserGpcFlag=0&isIABGlobal=false&consentId=94401282&identifierType=Cookie+Unique+Id&isAnonUser=1&hosts=&interactionCount=1&landingPath=NotLandingPage&groups=C0001%3A1%2CC0002%3A1%2CC0003%3A1%2CC0004%3A1%2CC0005%3A1%2CV2STACK42%3A1%2CC0015%3A1%2CC0035%3A1%2CC0038%3A1&genVendors=V2%3A1%2CV1%3A1%2C&intType=1&geolocation=PL%3B14&AwaitingReconsent=false"
     },
     {
         "domain": ".www.vinted.pl",
-        "expirationDate": 1760905581.063468,
+        "expirationDate": 1763764476.631695,
         "hostOnly": false,
         "httpOnly": true,
         "name": "refresh_token_web",
@@ -114,11 +153,11 @@
         "secure": true,
         "session": false,
         "storeId": null,
-        "value": "eyJraWQiOiJFNTdZZHJ1SHBsQWp1MmNObzFEb3JIM2oyN0J1NS1zX09QNVB3UGlobjVNIiwiYWxnIjoiUFMyNTYifQ.eyJhY2NvdW50X2lkIjo2ODAzMzQxOCwiYXBwX2lkIjo0LCJhdWQiOiJmci5jb3JlLmFwaSIsImNsaWVudF9pZCI6IndlYiIsImV4cCI6MTc2MDkwNTU3MCwiaWF0IjoxNzYwMzAwNzcwLCJpc3MiOiJ2aW50ZWQtaWFtLXNlcnZpY2UiLCJsb2dpbl90eXBlIjozLCJwdXJwb3NlIjoicmVmcmVzaCIsInNjb3BlIjoidXNlciIsInNpZCI6IjYwYmQ4NzMzLTE3NTg1Mzg2ODAiLCJzdWIiOiI5NDQwMTI4MiIsImNjIjoiUEwiLCJhbmlkIjoiOTEwMjgyN2YtM2IxYy00NTFhLWFlYTYtNDlmNThmZDE3OGQ2IiwiYWN0Ijp7InN1YiI6Ijk0NDAxMjgyIn19.G1JzVbqKy4K2a5z-CEFVqe0u6C9oMTA48l454G_2WCUn-526K3l1x2rGr63l0SxkrePHm0ZveJ9KJ_KX0LSCX7PdJDQ2jUL5pWOGVJUKmlwLCjYt_T_viANqNMwOhXkcbbcWTly3pnhGxtd97CTMLIuZ7m3oF-ef0XqW8nMHuTUnwiOmtcj8RcjNhoXy6Aj9A6C2euyJRvsy5N-rkFLTLkIuANh_y51JZ4kQPHqT40RaoKVumAIT3Kkucd3uaIm-NDYUWAJkx7sQfKwzqslqknGjtv4EBp-4AJYD9gXJraYZnXffXqL8K8-skqWgGAm--ovvw9wB0ZAINNxKE3q7Jw"
+        "value": "eyJraWQiOiJFNTdZZHJ1SHBsQWp1MmNObzFEb3JIM2oyN0J1NS1zX09QNVB3UGlobjVNIiwiYWxnIjoiUFMyNTYifQ.eyJhY2NvdW50X2lkIjo2ODAzMzQxOCwiYXBwX2lkIjo0LCJhdWQiOiJmci5jb3JlLmFwaSIsImNsaWVudF9pZCI6IndlYiIsImV4cCI6MTc2Mzc2NDQ3NSwiaWF0IjoxNzYzMTU5Njc1LCJpc3MiOiJ2aW50ZWQtaWFtLXNlcnZpY2UiLCJsb2dpbl90eXBlIjozLCJwdXJwb3NlIjoicmVmcmVzaCIsInNjb3BlIjoidXNlciIsInNpZCI6ImMzMDAyYTQwLTE3NjIyNzY4OTQiLCJzdWIiOiI5NDQwMTI4MiIsImNjIjoiUEwiLCJhbmlkIjoiOTEwMjgyN2YtM2IxYy00NTFhLWFlYTYtNDlmNThmZDE3OGQ2IiwiYWN0Ijp7InN1YiI6Ijk0NDAxMjgyIn19.ApGzMKV0qeJdvJZXsjudklu2kqDGHuRvRf0twXNzrfYgYFzFFV9LRlB96dtWbayF_GX4rq4PWDUsN6e93nHelG4O08Pd1uIfePqTsGC8T96yVQbynlPa7GnhuX7sHRfAUYyUgCERS4bzImuJEC8x1NV6ltwO4tVqPDTeg2Mkmok7yNMjq0oPxnwBNH6nR85OAuKDcqpdp7BIwA1OdH9KI-jCH_IBtoYxv3-CWRFUHEJ7lonAyAy2Oix1wvEzG2-CIyzwCNaxNnnakgayfC2lZyDSYvC7cTnX9fGloMvFr_HrPo1AfAuP80M17kIX91ACSfG2yQfvV5Rrwt3GwbB_NA"
     },
     {
         "domain": "www.vinted.pl",
-        "expirationDate": 1760305087.876382,
+        "expirationDate": 1763162686.747772,
         "hostOnly": true,
         "httpOnly": false,
         "name": "banners_ui_state",
@@ -128,6 +167,19 @@
         "session": false,
         "storeId": null,
         "value": "SUCCESS"
+    },
+    {
+        "domain": ".vinted.pl",
+        "expirationDate": 1796654889.76987,
+        "hostOnly": false,
+        "httpOnly": false,
+        "name": "_ga",
+        "path": "/",
+        "sameSite": null,
+        "secure": false,
+        "session": false,
+        "storeId": null,
+        "value": "GA1.1.143444923.1762094765"
     },
     {
         "domain": ".vinted.pl",
@@ -157,7 +209,7 @@
     },
     {
         "domain": ".vinted.pl",
-        "expirationDate": 1760305639.006624,
+        "expirationDate": 1763162731.771303,
         "hostOnly": false,
         "httpOnly": true,
         "name": "__cf_bm",
@@ -166,11 +218,115 @@
         "secure": true,
         "session": false,
         "storeId": null,
-        "value": "BP5FWGrAUhqihpJko5eCE9xyMr17yEZcOeIDZ8WkI0Q-1760303838-1.0.1.1-ppGMszTDHCxAiAiu22EBj0n.P6.8QS8OjL7a75umexSEVp_w2JI4_pMtA_Sr82Knj80x4iCKh9VszlUbDS5HVtQl9gnR6faPdnLANuD3j1S9qacYAcvT8Xgpx54znHOb"
+        "value": "B5.MlzuRFdzMW9FyjlVGuOswxnOjRIv4U_Z9zgZUhoc-1763160930-1.0.1.1-z0R6xxF8SZtON6rBrqAuJbcjUWvaiYXHCdQib2bg.8kRbQW1YI9t0Wwcll4qeAAOPhJ5j6bqh8C3R6QXWeGIc6UfV.d40yRAQwR79a8T_2eWvuFaN3KoJ_W3S6L4De6O"
+    },
+    {
+        "domain": ".vinted.pl",
+        "expirationDate": 1795790768,
+        "hostOnly": false,
+        "httpOnly": false,
+        "name": "__gads",
+        "path": "/",
+        "sameSite": "no_restriction",
+        "secure": true,
+        "session": false,
+        "storeId": null,
+        "value": "ID=7d04a1e111283b2a:T=1762094768:RT=1762094768:S=ALNI_MYh2t5-srwLRe9hH1MwkS2Nqo1nRw"
+    },
+    {
+        "domain": ".vinted.pl",
+        "expirationDate": 1795790768,
+        "hostOnly": false,
+        "httpOnly": false,
+        "name": "__gpi",
+        "path": "/",
+        "sameSite": "no_restriction",
+        "secure": true,
+        "session": false,
+        "storeId": null,
+        "value": "UID=00001300b8c09eb7:T=1762094768:RT=1762094768:S=ALNI_MYYnCTfGWAgSb0ZXnZdPuUt553MCQ"
+    },
+    {
+        "domain": ".vinted.pl",
+        "expirationDate": 1793630765,
+        "hostOnly": false,
+        "httpOnly": false,
+        "name": "__ps_did",
+        "path": "/",
+        "sameSite": "no_restriction",
+        "secure": true,
+        "session": false,
+        "storeId": null,
+        "value": "pscrb_e4f051c1-fe21-4b08-d61c-8834ae1600fc"
+    },
+    {
+        "domain": ".vinted.pl",
+        "expirationDate": 1793630765,
+        "hostOnly": false,
+        "httpOnly": false,
+        "name": "__ps_lu",
+        "path": "/",
+        "sameSite": "no_restriction",
+        "secure": true,
+        "session": false,
+        "storeId": null,
+        "value": "https://www.vinted.pl/items/7452512061-szerokie-brazowe-vintage-jeansy-washed-denim-unisex-y2k-oversize-spodnie"
+    },
+    {
+        "domain": ".vinted.pl",
+        "expirationDate": 1793630765,
+        "hostOnly": false,
+        "httpOnly": false,
+        "name": "__ps_r",
+        "path": "/",
+        "sameSite": "no_restriction",
+        "secure": true,
+        "session": false,
+        "storeId": null,
+        "value": "_"
+    },
+    {
+        "domain": ".vinted.pl",
+        "expirationDate": 1796654905.919323,
+        "hostOnly": false,
+        "httpOnly": false,
+        "name": "_ga_762HZ9XYEN",
+        "path": "/",
+        "sameSite": null,
+        "secure": false,
+        "session": false,
+        "storeId": null,
+        "value": "GS2.1.s1762094765$o1$g1$t1762094905$j59$l0$h0"
+    },
+    {
+        "domain": ".vinted.pl",
+        "expirationDate": 1796654905.928773,
+        "hostOnly": false,
+        "httpOnly": false,
+        "name": "_ga_ZJHK1N3D75",
+        "path": "/",
+        "sameSite": null,
+        "secure": false,
+        "session": false,
+        "storeId": null,
+        "value": "GS2.1.s1762094765$o1$g1$t1762094905$j59$l0$h0"
+    },
+    {
+        "domain": ".vinted.pl",
+        "expirationDate": 1769870765,
+        "hostOnly": false,
+        "httpOnly": false,
+        "name": "_gcl_au",
+        "path": "/",
+        "sameSite": null,
+        "secure": false,
+        "session": false,
+        "storeId": null,
+        "value": "1.1.1646801347.1762094765"
     },
     {
         "domain": ".www.vinted.pl",
-        "expirationDate": 1760909666.482218,
+        "expirationDate": 1763766901.408669,
         "hostOnly": false,
         "httpOnly": true,
         "name": "_vinted_fr_session",
@@ -179,11 +335,11 @@
         "secure": true,
         "session": false,
         "storeId": null,
-        "value": "cEdLWXZoM0JPK2ZDZ2RlU2g3cDkxbDBmZHdNaVd1djRIU1pnTkdqQWdGRW9aY1hSTlh5VlpJYmR1cTcyd2d6OHB4MnBCejVQY0E5NUFzY2xPTjlwRGtzYVFDbUF3bnRMdWlLeFlyT0I3Nms0UHdXdUJhZkFhbUptVVp0ZTQvQXY0WXB1Q1hJaUFzSDV6MlFCWHVOVTErbnNzRlRHUnlTYzY3d200dFM5YmJGYzRkcUIzeW4rMWVLenpzNWxqSVNmTHd1L3VLZzY3N0RtbjFYemVhZWxDdDFQVmlhcUMwS0dieTFTeHVMVkp2eDVjR2tXaTJIdy9hNFMyM20yNmwzSEw1eE1VK3k2SXpxU09QQTlMYVdmMTd5dGRGK3diSHpUd2l0T3VLVWFJa3JsaVFDV2VrZDN1VDlxVSt6QTk2ZWstLWV4aDFFdWV2clQ3cEZ2d3Z5RGVpdkE9PQ%3D%3D--0cfb559b29955bbd38358505fc4a716decba1962"
+        "value": "OTIzekZwYS9tQ2wxOVhnck5EUEZQcFFzMjh6UnRKalA2Rk1oYmZ2NXBoSU1FOXhHR0VWRE5CVDRxOXJ6cWhIS3h5ZGtSL3Zybk9MQXdnYXhOZ3oxbzJOd3pzbHN5clJpMHNRYnliQVJYUmVETzl0MlVkUXozcjl6Zk1oWFB4YUxZUVRKaUJOSGpKK2l1Wi8ybnNDQ1NyQ0dCR2F2SXhRS1MxRE9HRXFqTEtQQ3lYT2FZMmVraDR2YW96L3hMa0RIeHpQR3dGZndZZmtRRmlQVXhhOEpRK05IYjk4SDhxY2VpNTQvTnpPNkdreGVCYmN2NTF1Mm5hcmd3RU5wa3dXUkhsMG51VXNiMmRvWUJEenpndnBNME52ZnBrMDJoRjRicUM1TWRBQ0tJb1k1N0lrdUovM2ZhaXJpMlVzL0FEeXorOWlrRUVQeU1pUDNiRHVtUjliS2dicDFCak0zakFqWUJacTRjQjRBdnhzelFqQjVCZzhwdUlJdWlZV2RVZlRCZWl6bEgrNGxhZHJUeWEwYUd2UFFRanJOREZKNHpmL21RbW9yeXYxaGFJYz0tLWxxKzVJakRSL01VK290Nk9CY1pEUnc9PQ%3D%3D--76e74d6cf98fbe0cf38864380461af8da01f670d"
     },
     {
         "domain": "www.vinted.pl",
-        "expirationDate": 1794864866.48199,
+        "expirationDate": 1797722101.408361,
         "hostOnly": true,
         "httpOnly": false,
         "name": "anon_id",
@@ -196,7 +352,20 @@
     },
     {
         "domain": ".vinted.pl",
-        "expirationDate": 1791840626.022614,
+        "expirationDate": 1795790896,
+        "hostOnly": false,
+        "httpOnly": false,
+        "name": "cto_bundle",
+        "path": "/",
+        "sameSite": null,
+        "secure": false,
+        "session": false,
+        "storeId": null,
+        "value": "KxeU_V9mbUZMcmlrUmVBcWV5YThGMCUyQmZzTmVhR0VDdmVtaFBQeGUlMkY0Y0JPUUkwVSUyRjZ3VTFoOXpMajczc0NpQnNKWjhqb1NLcG05SERXJTJCZ2k1MTl2ckp2UXRYM092dVBOeHdycHF5MVlFMk5BZkhQcElkRGN4b0ZxaWNmOHp0WVRnVGwzbjVHTSUyQnl3VlJJZiUyQlRQQzNuakliTXclM0QlM0Q"
+    },
+    {
+        "domain": ".vinted.pl",
+        "expirationDate": 1794698100.736768,
         "hostOnly": false,
         "httpOnly": false,
         "name": "datadome",
@@ -205,11 +374,11 @@
         "secure": true,
         "session": false,
         "storeId": null,
-        "value": "Sicz4gW03d3CSx8vB0dXeQ0BO84mUd~4Q0WsF2Dl6U7i0fG~jeHNOdfqJWYDacC3uA_9KtWjRRhN2MZ2uqA15c_d92r3XOe5jVhi~4FB6ROncjO12I91vOkW8Df9f1j4"
+        "value": "DyJIbvSohC0y0nncK6ebLA~BaRCr1~WrHkgLze75kClSYHuKp_AP2qlMQwkdLEWWpaQrsAIvPFV5SvKMgynlTGMRYlQQAPqFqHqyfZAOAtTqMTQdQaM6wrCxa~awRQ3A"
     },
     {
         "domain": "www.vinted.pl",
-        "expirationDate": 1760909554.780033,
+        "expirationDate": 1763220900.997459,
         "hostOnly": true,
         "httpOnly": false,
         "name": "homepage_session_id",
@@ -218,7 +387,7 @@
         "secure": false,
         "session": false,
         "storeId": null,
-        "value": "49d7e864-f7c2-45df-a821-f3f8b21706d4"
+        "value": "7b378888-2bac-4eb4-9371-dc8f7d8dd411"
     },
     {
         "domain": ".vinted.pl",
@@ -235,7 +404,7 @@
     },
     {
         "domain": "www.vinted.pl",
-        "expirationDate": 1793098682.283271,
+        "expirationDate": 1796836897.725202,
         "hostOnly": true,
         "httpOnly": true,
         "name": "v_sid",
@@ -244,11 +413,11 @@
         "secure": false,
         "session": false,
         "storeId": null,
-        "value": "60bd8733-1758538680"
+        "value": "c3002a40-1762276894"
     },
     {
         "domain": "www.vinted.pl",
-        "expirationDate": 1793098682.2832,
+        "expirationDate": 1796836897.725156,
         "hostOnly": true,
         "httpOnly": true,
         "name": "v_uid",
