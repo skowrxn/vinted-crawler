@@ -22,6 +22,7 @@ export default function Home() {
     const [isLoading, setIsLoading] = useState(false);
     const [showHistory, setShowHistory] = useState(false);
     const [history, setHistory] = useState([]);
+    const [loadedFromHistory, setLoadedFromHistory] = useState(null);
 
     // Handle cookies input change
     const handleCookiesChange = (e) => {
@@ -88,6 +89,7 @@ export default function Home() {
 
             if (data.success) {
                 setProducts(data.items);
+                setLoadedFromHistory(null); // Clear history info for new search
             } else {
                 alert(
                     `Błąd: ${data.error || "Nie udało się pobrać produktów"}`
@@ -126,8 +128,12 @@ export default function Home() {
             const data = await response.json();
 
             if (data.success) {
-                const items = JSON.parse(data.data.items_data);
+                // items_data is already parsed as an object from PostgreSQL JSONB
+                const items = typeof data.data.items_data === 'string'
+                    ? JSON.parse(data.data.items_data)
+                    : data.data.items_data;
                 setProducts(items);
+                setLoadedFromHistory(data.data.created_at);
                 setShowHistory(false);
             } else {
                 alert("Nie udało się załadować wyników");
@@ -339,6 +345,37 @@ export default function Home() {
                     {/* Results Section */}
                     {!isLoading && products.length > 0 && (
                         <section>
+                            {loadedFromHistory && (
+                                <div className="max-w-[800px] mx-auto mb-8">
+                                    <div className="bg-[#111111] border border-gray-800 rounded-xl p-4 flex items-center gap-3">
+                                        <svg
+                                            className="w-5 h-5 text-yellow-500 flex-shrink-0"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            viewBox="0 0 24 24"
+                                        >
+                                            <path
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                                strokeWidth={2}
+                                                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                                            />
+                                        </svg>
+                                        <p className="text-white/70 text-base">
+                                            Dane historyczne z dnia{" "}
+                                            <span className="text-white font-medium">
+                                                {new Date(loadedFromHistory).toLocaleString("pl-PL", {
+                                                    year: "numeric",
+                                                    month: "2-digit",
+                                                    day: "2-digit",
+                                                    hour: "2-digit",
+                                                    minute: "2-digit",
+                                                })}
+                                            </span>
+                                        </p>
+                                    </div>
+                                </div>
+                            )}
                             <div className="flex justify-between items-center mb-8">
                                 <h3 className="text-4xl font-bold text-white">
                                     Najpopularniejsze produkty

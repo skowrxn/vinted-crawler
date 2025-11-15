@@ -55,24 +55,16 @@ export default function HistoryModal({ isOpen, onClose, history, onSelectHistory
                             Brak historii wyszukiwań
                         </p>
                     ) : (
-                        <div className="space-y-4">
+                        <div className="space-y-3">
                             {history.map((item) => (
                                 <div
                                     key={item.id}
                                     onClick={() => onSelectHistory(item.id)}
-                                    className="p-6 bg-[#1a1a1a] rounded-xl border border-gray-800 hover:bg-[#222] hover:border-white/10 transition-all cursor-pointer"
+                                    className="p-5 bg-[#1a1a1a] rounded-xl border border-gray-800 hover:bg-[#222] hover:border-white/10 transition-all cursor-pointer"
                                 >
-                                    <div className="flex justify-between items-start mb-3">
-                                        <span className="text-base font-medium text-white">
-                                            {formatDate(item.created_at)}
-                                        </span>
-                                        <span className="text-sm bg-yellow-500 text-black px-3 py-1 rounded-full font-medium">
-                                            {item.items_count} produktów
-                                        </span>
-                                    </div>
-                                    <p className="text-sm text-white/70 truncate">
-                                        {item.search_url}
-                                    </p>
+                                    <span className="text-base font-medium text-white">
+                                        {formatDate(item.created_at)}
+                                    </span>
                                 </div>
                             ))}
                         </div>
