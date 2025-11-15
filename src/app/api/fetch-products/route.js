@@ -52,17 +52,17 @@ export async function POST(request) {
         // Sort by favourite_count descending
         allItems.sort((a, b) => b.favourite_count - a.favourite_count);
 
-        // Get top 30
-        const top30Items = allItems.slice(0, 30);
+        // Get top 100
+        const top100Items = allItems.slice(0, 100);
 
         // Save to database
-        const savedId = await saveSearchResult(top30Items, baseUrl, params);
+        const savedId = await saveSearchResult(top100Items, baseUrl, params);
 
         return NextResponse.json({
             success: true,
-            items: top30Items,
+            items: top100Items,
             searchId: savedId,
-            count: top30Items.length,
+            count: top100Items.length,
         });
     } catch (error) {
         console.error("Error fetching products:", error.message);

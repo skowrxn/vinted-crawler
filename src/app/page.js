@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Header from "@/components/Header";
 import ProductCard from "@/components/ProductCard";
 import LoadingSpinner from "@/components/LoadingSpinner";
 import HistoryModal from "@/components/HistoryModal";
@@ -66,6 +65,12 @@ export default function Home() {
 
             setIsLoading(true);
             setProducts([]);
+
+            // Scroll down smoothly
+            window.scrollTo({
+                top: 600,
+                behavior: "smooth"
+            });
 
             const response = await fetch("/api/fetch-products", {
                 method: "POST",
@@ -135,21 +140,8 @@ export default function Home() {
 
     return (
         <>
-            <Header />
-
-            <main className="bg-black text-white pt-44 pb-20 px-4">
+            <main className="bg-black text-white pt-16 pb-20 px-4">
                 <div className="max-w-7xl mx-auto">
-                    {/* Hero Section */}
-                    <section className="text-center mb-16">
-                        <h1 className="text-5xl font-bold mb-4 tracking-tight">
-                            Popularne produkty na Vinted
-                        </h1>
-                        <p className="text-xl text-white/70 max-w-xl mx-auto mb-6">
-                            Śledź najpopularniejsze produkty z Vinted i zapisuj
-                            wyniki wyszukiwań
-                        </p>
-                    </section>
-
                     {/* Input Section */}
                     <section className="max-w-[800px] mx-auto mb-16">
                         <div className="bg-[#111111] border border-gray-800 rounded-3xl p-4 sm:p-6 md:p-8">
@@ -348,8 +340,8 @@ export default function Home() {
                     {!isLoading && products.length > 0 && (
                         <section>
                             <div className="flex justify-between items-center mb-8">
-                                <h3 className="text-5xl font-bold text-white">
-                                    Top produkty
+                                <h3 className="text-4xl font-bold text-white">
+                                    Najpopularniejsze produkty
                                 </h3>
                                 <span className="text-base text-white/70">
                                     {products.length} produktów
@@ -367,17 +359,6 @@ export default function Home() {
                     )}
                 </div>
             </main>
-
-            {/* Footer */}
-            <footer className="bg-black border-t border-white/10 py-8">
-                <div className="max-w-7xl mx-auto px-4">
-                    <div className="flex flex-col items-center gap-3">
-                        <p className="text-white/60 text-sm">
-                            Vinted Viral Tracker © 2025
-                        </p>
-                    </div>
-                </div>
-            </footer>
 
             {/* History Modal */}
             <HistoryModal

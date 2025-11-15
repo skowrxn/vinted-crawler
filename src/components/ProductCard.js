@@ -68,11 +68,6 @@ export default function ProductCard({ product }) {
                             ? `${product.price.amount} ${product.price.currency_code}`
                             : `${product.price} ${product.currency || ''}`}
                     </span>
-                    {product.brand_title && (
-                        <span className="text-sm text-white/70">
-                            {product.brand_title}
-                        </span>
-                    )}
                 </div>
             </div>
         </div>
